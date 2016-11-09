@@ -41,7 +41,7 @@ class LoginController {
     //logout the user
     yield request.auth.logout();
     //send an alert message
-    yield request.with({ success: 'you have logged out'}).flash();
+    yield request.with({ success: 'You have logged out. You are done.'}).flash();
     //redirect to login
     response.redirect('/login');
 
