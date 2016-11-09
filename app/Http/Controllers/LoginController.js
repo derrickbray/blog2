@@ -20,16 +20,16 @@ class LoginController {
 
       const validLogin = yield request.auth.attempt(email, password);
       yield request.with({ success: 'you have logged in' })
-      .flash();
+        .flash();
       //redirect to home
       response.redirect('/');
-    } catch (e)
+    } catch (e) {
       //send back the old inputs (not password)
       yield request.withOut('password')
-      //send back error message
-      .andWith({ error: 'Credentials do not match.' })
-      //only show message once
-      .flash();
+        //send back error message
+        .andWith({ error: 'Credentials do not match.' })
+        //only show message once
+        .flash();
       //back from whence you came
       response.redirect('back');
     }
@@ -38,7 +38,12 @@ class LoginController {
   }
 
   * destroy(request, response) {
-    //
+    //logout the user
+    yield request.auth.logout();
+    //send an alert message
+    yield request.with({ success: 'you have logged out'}).flash();
+    //redirect to login
+    response.redirect('/login');
 
   }
 
