@@ -3,7 +3,8 @@
 const User = use('App/Model/User');
 const Hash = use('Hash');
 
-class UserController { * create(request, response) {
+class UserController
+{ * create(request, response) {
     //show a form to make a new account
     yield response.sendView('user.create');
   } * store(request, response) {

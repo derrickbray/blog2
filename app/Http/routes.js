@@ -22,3 +22,8 @@ Route.on('/').render('welcome')
 //make the application respond to sign-up urls
 Route.get('/sign-up', 'UserController.create');
 Route.post('/sign-up', 'UserController.store');
+
+//show login form
+Route.get('/login', 'LoginController.create');
+//respond to submitted login form
+Route.post('/login', 'LoginController.store');
