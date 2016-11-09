@@ -30,3 +30,5 @@ Route.get('/login', 'LoginController.create');
 Route.post('/login', 'LoginController.store');
 //logout users on any type of request to 'logout'
 Route.any('/logout', 'LoginController.destroy');
+//Registerall
+Route.resource('/posts', 'PostController').middleware('auth');
