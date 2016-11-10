@@ -6,7 +6,7 @@
     "dev": "nodemon --watch app --watch bootstrap --watch config --watch .env -x \"node --harmony\" server.js",
     "start": "node --harmony server.js",
     "assets:build": "ember build -o public/dist",
-   "assets:watch": "ember build -w -o public/dist",
+    "assets:watch": "ember build -w -o public/dist",
     "lint": "standard"
   },
   "author": "",
@@ -58,6 +58,7 @@
     "App": "./app"
   },
   "devDependencies": {
+    "adonis-generators": "^0.4.8",
     "nodemon": "^1.11.0",
     "standard": "^8.5.0"
   }

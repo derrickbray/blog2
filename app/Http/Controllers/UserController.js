@@ -4,14 +4,16 @@ const User = use('App/Model/User');
 const Hash = use('Hash');
 
 class UserController
-{ * create(request, response) {
-    //show a form to make a new account
+  { * create(request, response) {
+    // show a form to make a new account
     yield response.sendView('user.create');
-  } * store(request, response) {
-    //saves the account to the database
-    const {username, email, password} = request.all()
+  }
+
+  * store(request, response) {
+    // saves the account to the database
+    const { username, email, password } = request.all();
     try {
-      const user = yield User.create({username, email, password: yield Hash.make(password)});
+      const user = yield User.create({ username, email, password: yield Hash.make(password) });
 
       yield request.auth.login(user);
 
@@ -20,8 +22,6 @@ class UserController
       }).flash();
 
       response.redirect('/');
-
-
     } catch (e) {
       yield request
         .withOut('password')
@@ -30,12 +30,11 @@ class UserController
 
       response.redirect('back');
     }
-    //save the user
+    // save the user
 
     response.send(user);
-
   }
 
 }
 
-module.exports = UserController
+module.exports = UserController;
