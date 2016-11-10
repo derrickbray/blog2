@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /*
 |--------------------------------------------------------------------------
@@ -15,20 +15,24 @@
 | Route.resource('user', 'UserController')
 */
 
-const Route = use('Route')
-//show the welcome page if the user is logged in
-//if not throw else where
+const Route = use('Route');
+// show the welcome page if the user is logged in
+// if not throw else where
 Route.on('/').render('welcome').middleware('auth');
 
-//make the application respond to sign-up urls
+// make the application respond to sign-up urls
 Route.get('/sign-up', 'UserController.create');
 Route.post('/sign-up', 'UserController.store');
 
-//show login form
+// show login form
 Route.get('/login', 'LoginController.create');
-//respond to submitted login form
+// respond to submitted login form
 Route.post('/login', 'LoginController.store');
-//logout users on any type of request to 'logout'
+// logout users on any type of request to 'logout'
 Route.any('/logout', 'LoginController.destroy');
-//Registerall
+// Registerall
 Route.resource('/posts', 'PostController').middleware('auth');
+
+
+Route.resource('/api/posts', 'Api/PostController').middleware('auth');
+Route.resource('/api/comments', 'Api/CommentController').middleware('auth');
